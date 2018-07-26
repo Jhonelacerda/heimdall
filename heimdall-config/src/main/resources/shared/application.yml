@@ -21,7 +21,7 @@ heimdall:
         prefix: heimdall
     datasource:
         initializationFailTimeout: -1
-        dataBaseType: POSTGRESQL
+        dataBaseType: SQLServer
         socketTimeout: 10000
         loginTimeout: 10000
         minimumIdle: 0
@@ -29,16 +29,16 @@ heimdall:
         validationTimeout: 10000
         idleTimeout: 10000
         connectionTimeout: 10000
-        dataSourceClassName: org.postgresql.ds.PGSimpleDataSource
+        dataSourceClassName: com.microsoft.sqlserver.jdbc.SQLServerDataSource
         connectionTestQuery: SELECT 1
         autoCommit: false
         initializationFailFast: false
         appName: HEIMDALL
         databaseName: heimdall
-        portNumber: 5432
-        serverName: 127.0.0.1
-        username: postgres
-        password: 123456
+        portNumber: 1433
+        serverName: 10.19.21.188
+        username: UserPier
+        password: UserPier
         runLiquibase: true
         sendStringParametersAsUnicode: false
     mongo:
@@ -56,7 +56,7 @@ heimdall:
             - access_token
             - client_id
     redis:
-        host: 127.0.0.1
+        host: 192.168.10.200
         port: 6379
         maxTotal: 128
         maxIdle: 128
@@ -87,8 +87,8 @@ spring:
         fail-on-write-error: false
         file: heimdall.pid
     jpa:
-        database-platform: org.hibernate.dialect.PostgreSQLDialect
-        database: POSTGRESQL
+        database-platform: org.hibernate.dialect.SQLServer2012Dialect
+        database: SQL_SERVER
         openInView: false
         show_sql: true
         generate-ddl: false
@@ -100,9 +100,9 @@ spring:
             INDENT_OUTPUT: true
             WRITE-DATES-AS-TIMESTAMPS: false
     rabbitmq:
-        host: 127.0.0.1
+        host: 192.168.10.200
         port: 5672
-        #virtual-host: dev
+        virtual-host: desenvolvimento
         requested-heartbeat: 10
     cache:
         type: redis
